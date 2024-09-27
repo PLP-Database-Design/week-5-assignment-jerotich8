@@ -24,6 +24,7 @@ db.connect((err)=>{
 app.set('view engine', 'ejs');
 app.set ('views', __dirname + '/views');
 
+//question 1;
 app.get('/data', (req,res) => {
     db.query('SELECT * FROM patients', (err, results) => {
         if(err){
@@ -35,6 +36,8 @@ app.get('/data', (req,res) => {
     });
 });
 
+
+//question 2;
 app.get('/provider', (req,res) => {
     db.query('SELECT * FROM providers', (err, results) => {
         if(err){
@@ -46,6 +49,7 @@ app.get('/provider', (req,res) => {
     });
 });
 
+// question 3;
 app.get('/patients/first_name/:firstName', (req,res) => {
     const {firstName} = req.params;
     db.query('SELECT * FROM patients WHERE first_name = ?', [firstName], (err, results) => {
@@ -58,6 +62,7 @@ app.get('/patients/first_name/:firstName', (req,res) => {
     });
 });
 
+// question 4;
 app.get('/providers/provider_specialty/:specialty', (req,res) => {
     const {specialty} = req.params;
     db.query('SELECT * FROM providers WHERE provider_specialty = ?', [specialty], (err, results) => {
